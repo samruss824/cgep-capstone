@@ -28,7 +28,13 @@ resource "aws_iam_role" "grc_gate" {
       Action    = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringEquals = { "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com" }
-        StringLike   = { "token.actions.githubusercontent.com:sub" = "repo:${var.github_org}/${var.github_repo}:*" }
+        StringLike   = { 
+            "token.actions.githubusercontent.com:sub" = [
+                "repo:samruss824/cgep-capstone:pull_request",
+                "repo:samruss824/cgep-capstone:ref:refs/heads/main",
+                "repo:samruss824/cgep-capstone:ref:refs/heads/*"
+            ] 
+            }
       }
     }]
   })
