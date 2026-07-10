@@ -1,6 +1,7 @@
 # .github/workflows/grc-gate.yml
 name: grc-gate
 
+# Run the GRC gate on pull requests and on demand for evidence validation.
 on:
   pull_request:
     branches: [main]
